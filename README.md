@@ -84,7 +84,7 @@ def handle_request():
 ```
 ### AutoComplteTextView
 Okhttp3는 Thread안에서 통신하기 때문에 runOnThreadUi를 안할 시 Ui 변경될 때 에러가 나서 꼭 해줘야 합니다. <br>
-DB 출처 - https://www.foodsafetykorea.go.kr/fcdb/
+데이터출처 - https://www.foodsafetykorea.go.kr/fcdb/
 ```java
 private void makeApiCall(String text) {
         String portNumber = "5000";
