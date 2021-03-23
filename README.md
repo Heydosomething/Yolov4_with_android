@@ -82,3 +82,57 @@ def handle_request():
             }
         });
 ```
+### AutoComplteTextView
+Okhttp3는 Thread안에서 통신하기 때문에 runOnThreadUi를 안할 시 Ui 변경될 때 에러가 나서 꼭 해줘야 합니다. 
+```java
+private void makeApiCall(String text) {
+        String portNumber = "5000";
+        String postUrl = "http://" + IpAddress + ":" + portNumber + "/autofood";
+        List<String> stringList = new ArrayList<>();
+        try {
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(1, TimeUnit.MINUTES)
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .writeTimeout(15, TimeUnit.SECONDS)
+                    .build();
+            RequestBody body = new FormBody.Builder()
+                    .add("word", text)
+                    .build();
+            Request request = new Request.Builder()
+                    .url(postUrl)
+                    .post(body)
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                }
+
+                @Override
+                public void onResponse(Call call, final Response response) throws IOException {
+
+
+                        getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try(ResponseBody responseBody = response.body()) {
+                                        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                                        String tmp = response.body().string();
+                                        String tmpsplit[] = tmp.split("@");
+                                        for (int i = 0; i < tmpsplit.length; i++)
+                                            stringList.add(tmpsplit[i]);
+                                        adapter.setData(stringList);
+                                        adapter.notifyDataSetChanged();
+                                    } catch (Exception e){
+
+                                    }
+                                }
+                            });
+
+                }
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+```
