@@ -5,7 +5,7 @@
  Flask는 요청을 받고 모델을 실행 후 결과값을 리턴.
 ## Yolov4
 ### Colab
-[![colab](https://user-images.githubusercontent.com/4096485/86174097-b56b9000-bb29-11ea-9240-c17f6bacfc34.png)](https://colab.research.google.com/drive/1_GdoqCJWXsChrOiY8sZMr_zbr_fH-0Fg) 
+[![colab](https://colab.research.google.com/drive/1EAPtYsWcZl_akRj2xQNtndiLd3_eCFA6?usp=sharing) 
 <br>여기서 Train Code를 볼 수 있습니다.
 ### Code (Flask\yolov4\Model.py)
 이 코드는 Weight 파일을 pb로 변환하는 코드입니다.<br>
