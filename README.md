@@ -137,3 +137,9 @@ private void makeApiCall(String text) {
 
     }
 ```
+
+## 프로젝트에 참가한 사람
+- [@HYB0321](https://github.com/HYB0321)
+- [@koasy17](https://github.com/koasy17)
+- [@tmddmddnjs](https://github.com/tmddmddnjs)
+- [@heohyunjun](https://github.com/heohyunjun)
